@@ -1,0 +1,70 @@
+/* Interactivity overrides extracted from user's `styles-interactivity.css` attachment */
+
+/* Ensure interactive elements are clickable even if parent sections disable events */
+a, button, [role="button"], input, .controls-wrap, nav, .hamburger, #mode-toggle {
+  pointer-events: auto;
+}
+
+/* Mode toggle (header-aligned, non-overlapping) */
+#mode-toggle {
+  background: #006400;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+
+  position: static;  /* critical: keeps it inside header flow */
+  margin-left: 12px;
+  z-index: 21;
+}
+#mode-toggle:hover { background: #075c07; }
+
+/* Particles canvas always behind content */
+#particles-js {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Optional Controls panel (if you enable it) */
+#controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.92);
+  color: #000;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 20;
+  max-width: 300px;
+}
+
+#controls h2 { font-size: 1.1rem; margin: 0.25rem 0 1rem; }
+#controls label { display: block; margin-bottom: .4rem; font-weight: 600; }
+#controls input, #controls select, #controls button {
+  width: 100%;
+  padding: .5rem;
+  margin-bottom: .8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#controls button {
+  background: #4B5EAA; color: #fff; cursor: pointer;
+}
+#controls button:hover { background: #3b4a8a; }
+
+/* AI section toggle button */
+#toggle-ai {
+  background: #1e293b;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+#toggle-ai:hover { background: #334155; }

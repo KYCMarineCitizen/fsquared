@@ -1,0 +1,276 @@
+/* Quirkbot theme (user-provided) */
+body.quirkbot {
+	background-color: #000000;
+	color: #ffffff;
+	font-family: Arial, sans-serif;
+}
+
+#ui-container {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background: rgba(139, 0, 0, 0.9); /* Dark red */
+	padding: 15px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	z-index: 10;
+	max-width: 300px;
+	color: #ffffff;
+	transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+#ui-container.minimized {
+	height: 40px;
+	overflow: hidden;
+	opacity: 0.7;
+}
+
+#ui-container.minimized .control-group,
+#ui-container.minimized .button-group,
+#ui-container.minimized #timeDisplay,
+#ui-container.minimized #stats,
+#ui-container.minimized #chartContainer {
+	display: none;
+}
+
+#right-controls-container {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: rgba(0, 204, 0, 0.9); /* Bright green */
+	padding: 15px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	max-width: 250px;
+	min-width: 200px;
+	color: #ffffff;
+	transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+#right-controls-container.minimized {
+	height: 40px;
+	overflow: hidden;
+	opacity: 0.7;
+}
+
+#right-controls-container.minimized > *:not(#toggleRightBox) {
+	display: none;
+}
+
+.control-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+
+.control-group label {
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+	color: #ffffff;
+}
+
+.control-group input, .control-group select, .control-group input[type="file"] {
+	margin-top: 5px;
+	padding: 5px;
+	border: 1px solid #ffffff;
+	border-radius: 4px;
+	width: 100%;
+	background-color: #a52a2a; /* Lighter red for inputs */
+	color: #ffffff;
+}
+
+.control-group input::placeholder, .control-group input[type="file"]::file-selector-button {
+	color: #d3d3d3;
+}
+
+.button-group {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+
+button {
+	padding: 8px 12px;
+	background-color: #b22222; /* Firebrick red */
+	color: #ffffff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #800000; /* Darker red */
+}
+
+.toggle-button {
+	background-color: #555555; /* Neutral gray for toggle buttons */
+	width: 100%;
+	text-align: center;
+}
+
+.toggle-button:hover {
+	background-color: #333333; /* Darker gray on hover */
+}
+
+#chartContainer {
+	margin-top: 15px;
+	background: #ffffff;
+	border-radius: 4px;
+	width: 100%;
+	max-width: 300px;
+	border: 1px solid #ffffff;
+}
+
+#stats {
+	margin-top: 15px;
+	font-weight: bold;
+	font-size: 14px;
+	color: #ffffff;
+}
+
+#timeDisplay {
+	margin-top: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.right-aligned-control label {
+	color: #ffffff;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+.right-aligned-control input[type="range"],
+.right-aligned-control select,
+.right-aligned-control button {
+	width: 100%;
+	padding: 5px;
+	border-radius: 4px;
+	border: 1px solid #ffffff;
+	background-color: #33ff33; /* Lighter green */
+	color: #ffffff;
+}
+
+.right-aligned-control input[type="range"] {
+	-webkit-appearance: none;
+	appearance: none;
+	height: 8px; /* Make track thicker for visibility */
+	border-radius: 4px;
+}
+
+.right-aligned-control input[type="range"]::-webkit-slider-runnable-track {
+	height: 8px;
+	background: var(--track-background, linear-gradient(to right, #ff0000, #00ff00)); /* Dynamic or fallback gradient */
+	border-radius: 4px;
+}
+
+.right-aligned-control input[type="range"]::-moz-range-track {
+	height: 8px;
+	background: var(--track-background, linear-gradient(to right, #ff0000, #00ff00));
+	border-radius: 4px;
+}
+
+.right-aligned-control input[type="range"]::-ms-track {
+	height: 8px;
+	background: var(--track-background, linear-gradient(to right, #ff0000, #00ff00));
+	border-radius: 4px;
+	color: transparent; /* Hide default fill */
+}
+
+#ui-container input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 16px;
+	height: 16px;
+	background: #b22222; /* Fixed red for left side */
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#ui-container input[type="range"]::-moz-range-thumb {
+	width: 16px;
+	height: 16px;
+	background: #b22222; /* Fixed red for left side */
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#right-controls-container input[type="range"] {
+	--thumb-color: #b22222; /* Default to red */
+}
+
+#right-controls-container input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 16px;
+	height: 16px;
+	background: var(--thumb-color); /* Dynamic color */
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+#right-controls-container input[type="range"]::-moz-range-thumb {
+	width: 16px;
+	height: 16px;
+	background: var(--thumb-color); /* Dynamic color */
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.right-aligned-control button {
+	padding: 8px;
+	background-color: #009900; /* Darker green */
+	color: #ffffff;
+}
+
+.right-aligned-control button:hover {
+	background-color: #006600; /* Even darker green */
+}
+
+#register-container {
+	position: fixed;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	background: rgba(255, 255, 255, 0.9);
+	padding: 10px;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	z-index: 10;
+	color: #000000;
+}
+
+#registerButton {
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #007bff;
+	color: #ffffff;
+}
+
+#registerButton:hover {
+	background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+	#ui-container, #right-controls-container {
+		max-width: 90%;
+		padding: 10px;
+	}
+
+	#right-controls-container {
+		top: 300px;
+	}
+
+	#register-container {
+		bottom: 10px;
+		width: 90%;
+	}
+}

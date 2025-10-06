@@ -1,0 +1,4 @@
+/* Placeholder theme for virsfor.ai — replace with your styles when ready */
+body.virsfor { --brand-green: #3b82f6; --brand-green-dark: #2563eb; }
+
+.virsfor .patent-badge { background: var(--brand-green); }

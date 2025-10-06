@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fsquared — Home</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">Fsquared</a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="sr-only">Toggle navigation</span>
+        ☰
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" role="navigation">
+        <ul class="nav-list">
+          <li><a href="/">Home</a></li>
+          <li class="dropdown">
+            <button class="dropdown-toggle" aria-expanded="false">Company ▾</button>
+            <ul class="dropdown-menu" aria-label="Companies">
+              <li><a href="onlyallow.html">onlyallow.aiai</a></li>
+              <li><a href="quirkbot.html">quirkbot.ai</a></li>
+              <li><a href="virsfor.html">virsfor.ai</a></li>
+              <li><a href="batchforge.html">batchforge.ai</a></li>
+            </ul>
+          </li>
+          <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Fsquared</h1>
+      <p class="lead">A family of AI-first companies building useful products and research.</p>
+      <p><a class="btn" href="onlyallow.html">Explore our companies</a></p>
+    </section>
+
+    <section class="features">
+      <article>
+        <h2>Our Mission</h2>
+        <p>We invest in and build AI products that make developer lives easier and businesses more productive.</p>
+      </article>
+      <article>
+        <h2>Companies</h2>
+        <ul>
+          <li><a href="onlyallow.html">onlyallow.aiai</a></li>
+          <li><a href="quirkbot.html">quirkbot.ai</a></li>
+          <li><a href="virsfor.html">virsfor.ai</a></li>
+          <li><a href="batchforge.html">batchforge.ai</a></li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; <span id="year"></span> Fsquared</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

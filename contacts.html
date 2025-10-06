@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contacts — Fsquared</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">Fsquared</a>
+
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="sr-only">Toggle navigation</span>
+        ☰
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" role="navigation">
+        <ul class="nav-list">
+          <li><a href="/">Home</a></li>
+          <li class="dropdown">
+            <button class="dropdown-toggle" aria-expanded="false">Company ▾</button>
+            <ul class="dropdown-menu" aria-label="Companies">
+              <li><a href="onlyallow.html">onlyallow.aiai</a></li>
+              <li><a href="quirkbot.html">quirkbot.ai</a></li>
+              <li><a href="virsfor.html">virsfor.ai</a></li>
+              <li><a href="batchforge.html">batchforge.ai</a></li>
+            </ul>
+          </li>
+          <li><a href="contacts.html">Contacts</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <h1>Contact Us</h1>
+      <p class="lead">Get in touch with Fsquared or any of our companies.</p>
+    </section>
+
+    <section>
+  <h2>General Inquiries</h2>
+  <p>Email: <a href="mailto:info@fsquared.ai">info@fsquared.ai</a></p>
+      <p>For company-specific contacts, visit the company page and use the links there.</p>
+
+      <h3>Company contacts</h3>
+      <p>Each company has its own contact email and phone number. We use Google Workspace for email hosting; replace the placeholders with your real addresses and numbers.</p>
+      <div class="contacts-grid">
+        <div class="contact-card">
+          <h4>onlyallow.aiai</h4>
+          <p>Email: <a href="mailto:kyc@onlyallow.ai">kyc@onlyallow.ai</a></p>
+          <p>Phone: <a href="tel:0790941548">0790941548</a></p>
+        </div>
+
+        <div class="contact-card">
+          <h4>quirkbot.ai</h4>
+          <p>Email: <a href="mailto:kyc@quirkbot.ai">kyc@quirkbot.ai</a></p>
+          <p>Phone: <a href="tel:0790941548">0790941548</a></p>
+        </div>
+
+        <div class="contact-card">
+          <h4>virsfor.ai</h4>
+          <p>Email: <a href="mailto:kyc@virsfor.ai">kyc@virsfor.ai</a></p>
+          <p>Phone: <a href="tel:0790941548">0790941548</a></p>
+        </div>
+
+        <div class="contact-card">
+          <h4>batchforge.ai</h4>
+          <p>Email: <a href="mailto:kyc@batchforge.ai">kyc@batchforge.ai</a></p>
+          <p>Phone: <a href="tel:0790941548">0790941548</a></p>
+        </div>
+
+        <div class="contact-card">
+          <h4>Fsquared (holding)</h4>
+          <p>Email: <a href="mailto:kyc@fsquared.ai">kyc@fsquared.ai</a></p>
+          <p>Phone: <a href="tel:0790941548">0790941548</a></p>
+        </div>
+      </div>
+
+      <h3>Send a quick message</h3>
+      <form id="quick-contact-form">
+        <div>
+          <label for="company">Company</label><br />
+          <select id="company" name="company" required>
+            <option value="fsquared">Fsquared (holding)</option>
+            <option value="onlyallow">onlyallow.aiai</option>
+            <option value="quirkbot">quirkbot.ai</option>
+            <option value="virsfor">virsfor.ai</option>
+            <option value="batchforge">batchforge.ai</option>
+          </select>
+        </div>
+        <div>
+          <label for="name">Name</label><br />
+          <input id="name" name="name" type="text" required />
+        </div>
+        <div>
+          <label for="email">Email</label><br />
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div>
+          <label for="message">Message</label><br />
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+        <div>
+          <button class="btn" type="submit">Send Message</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container"><small>&copy; <span id="year"></span> Fsquared</small></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

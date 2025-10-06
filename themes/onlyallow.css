@@ -1,0 +1,499 @@
+/* Onlyallow theme (base). Imported from user-provided stylesheet.
+   This file customizes the look for onlyallow.aiai. Keep edits here. */
+
+/* ========== Base / Reset ========== */
+:root {
+  --brand-green: #00cc00;
+  --brand-green-dark: #009900;
+  --bg-dark: #000000;
+  --text-light: #ffffff;
+  --panel-bg: rgba(255, 255, 255, 0.92);
+  --panel-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  --radius: 8px;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* content sizing */
+  --container-max: 1000px;
+  --section-max: 600px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body.onlyallow {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Keep link colors aligned with text unless specified */
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Headings sizing (slightly reduced to let particles show through) */
+h1 { font-size: 1.5rem; margin: 0.75rem 0; }
+h2 { font-size: 1.2rem; margin: 0.75rem 0; }
+h3 { font-size: 1rem; margin: 0.5rem 0; }
+p, .hero-text { font-size: 0.9rem; line-height: 1.5; }
+
+/* ========== Layout Containers ========== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.hero-container,
+.content-container,
+.features-container {
+  width: 100%;
+  max-width: var(--section-max);
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Particles canvas pinned behind everything */
+#particles-js {
+  position: fixed;
+  inset: 0;
+  z-index: 0; /* background layer */
+}
+
+/* Keep site content above canvas (and below optional control panel) */
+header, main, footer {
+  position: relative;
+  z-index: 10;
+}
+
+/* If you previously used pointer-events:none globally, keep buttons/links interactive */
+header, main, footer { pointer-events: none; }
+a, button, [role="button"], input, .controls-wrap, nav, .hamburger { pointer-events: auto; }
+
+/* ========== Header/Nav ========== */
+header.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+.hamburger {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Push nav to the right; mode toggle follows neatly */
+.nav-mobile { margin-left: auto; }
+.nav-mobile ul {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-mobile a {
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+.nav-mobile a:hover {
+  background: rgba(255,255,255,0.08);
+  text-decoration: none;
+}
+
+/* ========== Mode Toggle Button (inline, no overlap) ========== */
+#mode-toggle {
+  background: #006400;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+
+  position: static;   /* ensures it sits in the header flow */
+  margin-left: 12px;  /* small gap after nav */
+  z-index: 21;        /* above canvas, below control panel if shown */
+}
+#mode-toggle:hover { background: #075c07; }
+
+/* ========== Forms / Buttons ========== */
+#password-form { margin: 50px 0; }
+#password-input {
+  width: 80%;
+  max-width: 500px;
+  padding: 15px;
+  font-size: 1.1rem;
+  border: 2px solid var(--brand-green);
+  border-radius: 5px;
+  background: rgba(0,0,0,0.35);
+  color: var(--text-light);
+  outline: none;
+}
+#password-input::placeholder { color: rgba(255,255,255,0.6); }
+
+#generate-button {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  background-color: var(--brand-green);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#generate-button:hover { background-color: var(--brand-green-dark); }
+
+/* ========== Features Section ========== */
+.features {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+.features > div {
+  padding: 1rem;
+  flex: 1 1 0%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  backdrop-filter: blur(2px);
+}
+
+/* ========== AI Section ========== */
+.ai-section { padding: 1.5rem; }
+#ai-only-key { user-select: text; }
+#toggle-ai {
+  background: #1e293b;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+#toggle-ai:hover { background: #334155; }
+
+/* ========== Footer / Cookies / Badge ========== */
+footer.container {
+  margin-top: 40px;
+  padding: 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+footer ul {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.cookies {
+  margin-top: 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+
+.cookies button {
+  background: var(--brand-green);
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  margin-left: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.cookies button:hover { background: var(--brand-green-dark); }
+
+.patent-badge {
+  display: inline-block;
+  background-color: var(--brand-green);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(0, 204, 0, 0.5);
+  margin-left: 15px;
+  font-family: var(--font-display);
+}
+
+/* ========== Dialog (result) ========== */
+#result-dialog {
+  display: none;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  color: #000;
+  padding: 20px;
+  border: 2px solid var(--brand-green);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  z-index: 1000;
+  text-align: center;
+}
+#copy-button, #close-dialog {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+#copy-button {
+  background: var(--brand-green); color: #fff;
+}
+#copy-button:hover { background: var(--brand-green-dark); }
+#close-dialog { background: #ccc; color: #000; }
+#close-dialog:hover { background: #bdbdbd; }
+
+/* ========== Optional: Controls panel scaffold (if used) ========== */
+#controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--panel-bg);
+  color: #000;
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--panel-shadow);
+  z-index: 20;
+  max-width: 300px;
+}
+#controls h2 { font-size: 1.1rem; margin: 0.25rem 0 1rem; }
+#controls label { display: block; margin-bottom: .4rem; font-weight: 600; }
+#controls input, #controls select, #controls button {
+  width: 100%;
+  padding: .5rem;
+  margin-bottom: .8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#controls button {
+  background: #4B5EAA; color: #fff; cursor: pointer;
+}
+#controls button:hover { background: #3b4a8a; }
+
+/* ========== Responsive tweaks ========== */
+@media (max-width: 768px) {
+  .features { flex-direction: column; }
+  .nav-mobile ul { flex-wrap: wrap; gap: 8px; }
+  #mode-toggle { margin-left: 0; }
+}
+/* =========================
+   GLASSMORPHISM UPGRADE
+   ========================= */
+
+/* Tunables for the whole site glass look */
+:root {
+  --glass-bg:        rgba(255,255,255,0.10);  /* base frost */
+  --glass-bg-strong: rgba(255,255,255,0.14);  /* stronger frost */
+  --glass-border:    rgba(255,255,255,0.22);
+  --glass-highlight: rgba(255,255,255,0.35);
+  --glass-shadow:    0 10px 30px rgba(0,0,0,0.35);
+
+  --glass-blur: 14px;           /* increase for more "through glass" */
+  --glass-blur-strong: 22px;
+  --glass-sat:  135%;
+  --glass-sat-strong: 160%;
+}
+
+/* Base glass effect: subtle frost with border + inner sheen */
+.glass-base {
+  position: relative;
+  background: linear-gradient( to bottom right,
+              rgba(255,255,255,0.18),
+              var(--glass-bg) );
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius);
+  overflow: clip;
+
+  /* The magic */
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+}
+
+/* Stronger, deeper frost (use on hero panels, dialogs, controls) */
+.glass-strong {
+  background: linear-gradient( to bottom right,
+              rgba(255,255,255,0.22),
+              var(--glass-bg-strong) );
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(var(--glass-sat-strong));
+  backdrop-filter: blur(var(--glass-blur-strong)) saturate(var(--glass-sat-strong));
+}
+
+/* Soft diagonal sheen */
+.glass-base::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: linear-gradient( 135deg,
+              rgba(255,255,255,0.35) 0%,
+              rgba(255,255,255,0.12) 28%,
+              rgba(255,255,255,0.08) 48%,
+              rgba(255,255,255,0.02) 100%);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+
+/* -------- Apply glass to site sections (no HTML edits) -------- */
+
+/* Header bar */
+header.container {
+  padding: 12px 16px;
+  border-radius: var(--radius);
+}
+header.container {
+  /* base glass */
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.16), var(--glass-bg));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  position: relative;
+}
+header.container::before {
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: linear-gradient( 135deg,
+              rgba(255,255,255,0.30) 0%,
+              rgba(255,255,255,0.10) 35%,
+              rgba(255,255,255,0.04) 100%);
+  mix-blend-mode: screen; opacity: .5;
+  border-radius: inherit;
+}
+
+/* Nav pills hover (glass chips) */
+.nav-mobile a {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.16);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.nav-mobile a:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Password form panel */
+#password-form {
+  padding: 16px;
+  border-radius: var(--radius);
+}
+#password-form {
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.18), var(--glass-bg));
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  box-shadow: var(--glass-shadow);
+}
+
+/* Feature cards */
+.features > div {
+  /* upgrade existing card to glass */
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.16), var(--glass-bg));
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  box-shadow: var(--glass-shadow);
+}
+
+/* AI section wrapper */
+.ai-section {
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.14), var(--glass-bg));
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius);
+}
+
+/* Cookie bar */
+.cookies {
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.18), var(--glass-bg));
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  box-shadow: var(--glass-shadow);
+}
+
+/* Footer */
+footer.container {
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.12), var(--glass-bg));
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius);
+}
+
+/* Controls panel & result dialog: use stronger glass */
+#controls,
+#result-dialog {
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.22), var(--glass-bg-strong));
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(var(--glass-sat-strong));
+  backdrop-filter: blur(var(--glass-blur-strong)) saturate(var(--glass-sat-strong));
+  box-shadow: var(--glass-shadow);
+}
+
+/* Inputs keep contrast but get subtle glass borders */
+input[type="password"],
+input[type="text"],
+select, textarea {
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+input[type="password"]:focus,
+input[type="text"]:focus,
+select:focus, textarea:focus {
+  outline: 0;
+  border-color: var(--brand-green);
+  box-shadow: 0 0 0 3px rgba(0,204,0,0.20);
+}
+
+/* Buttons retain solid brand fills for readability */
+#generate-button,
+#copy-button,
+.cookies button,
+#mode-toggle,
+#close-dialog {
+  filter: saturate(110%);
+}
+
+/* Fallback: if backdrop-filter not supported, increase solid alpha */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .glass-base,
+  .glass-strong,
+  header.container,
+  .features > div,
+  .ai-section,
+  .cookies,
+  footer.container,
+  #controls,
+  #result-dialog,
+  #password-form,
+  .nav-mobile a {
+    background: rgba(255,255,255,0.12); /* slightly more opaque so text stays readable */
+  }
+}
