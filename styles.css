@@ -133,6 +133,49 @@ form input, form button {
   color: #4a5568;
   margin-bottom: 1rem;
 }
+
+/* Batchforge-specific hero grid (used on batchforge.html) */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 1.5rem;
+  align-items: start;
+}
+.hero-left .brand-row{
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.company-logo{
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+  padding: 6px;
+  box-shadow: 0 6px 18px rgba(10,10,10,0.06);
+}
+.hero-title{font-size:1.6rem;margin:0}
+.hero-right .hero-video{
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  display: block;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* Make sure autoplaying videos appear crisp and don't show browser outlines */
+.hero-video[autoplay] {
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+@media (max-width:480px) {
+  /* On tiny screens hide video controls to save space (still playable via tap) */
+  .hero-video::-webkit-media-controls { display: none !important; }
+}
 .btn {
   display: inline-block;
   background: #0b6efd;
@@ -226,6 +269,7 @@ form input, form button {
 
 @media (max-width: 980px) {
   .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .features-grid { grid-template-columns: 1fr; }
@@ -249,3 +293,53 @@ form input, form button {
 
 @media (max-width: 980px) { .contacts-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .contacts-grid { grid-template-columns: 1fr; } }
+
+/* Social links used on company pages */
+.socials { margin: 2rem 0; text-align: center; }
+.socials h2 { margin-bottom: 0.75rem; color: #111; }
+.social-links { display: inline-flex; gap: 0.75rem; align-items: center; }
+.social { display: inline-flex; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 8px; background: #fff; color: #111; text-decoration: none; box-shadow: 0 4px 14px rgba(10,10,10,0.08); }
+.social svg { width: 20px; height: 20px; fill: currentColor; }
+.social-facebook { background: #1877f2; color: #fff; }
+.social-instagram { background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af); color: #fff; }
+.social-x { background: #1d9bf0; color: #fff; }
+.social-whatsapp { background: #25D366; color: #fff; }
+
+@media (max-width: 640px) { .social-links { gap: 0.5rem; } .social { width: 40px; height: 40px; } }
+
+/* Strong, theme-agnostic centering for socials section so it's always centered
+   regardless of per-theme container/grid rules. This forces the heading and
+   icon row to sit in the middle of the content area. */
+.socials.container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.socials .social-links {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Theme-scoped overrides to make sure socials are centered and rendered above
+   any fixed/absolute control panels that some themes add (e.g., quirkbot). */
+body.onlyallow .socials.container,
+body.batchforge .socials.container,
+body.quirkbot .socials.container,
+body.virusfor .socials.container {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: 15 !important; /* above most page content, below controls if needed */
+  margin: 2rem auto !important;
+}
+
+/* Ensure the heading inherits correct color across dark themes */
+.socials h2 { color: inherit !important; }
+.social-links { margin: 0 auto !important; }

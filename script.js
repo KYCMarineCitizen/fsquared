@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
 							fsquared: 'kyc@fsquared.ai',
 							onlyallow: 'kyc@onlyallow.ai',
 							quirkbot: 'kyc@quirkbot.ai',
-							virsfor: 'kyc@virsfor.ai',
+							virusfor: 'kyc@virusfor.ai',
 							batchforge: 'kyc@batchforge.ai'
 						};
 

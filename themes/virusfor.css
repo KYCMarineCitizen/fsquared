@@ -1,0 +1,4 @@
+/* Placeholder theme for virusfor.ai — replace with your styles when ready */
+body.virusfor { --brand-green: #3b82f6; --brand-green-dark: #2563eb; }
+
+.virusfor .patent-badge { background: var(--brand-green); }
