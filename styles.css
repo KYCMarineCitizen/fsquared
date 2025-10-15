@@ -28,6 +28,21 @@ form input, form button {
   padding: 0.5em;
 }
 
+.form-status {
+  margin-top: 0.75rem;
+  min-height: 1.2em;
+  font-size: 0.95rem;
+}
+.form-status.pending {
+  color: #6c757d;
+}
+.form-status.success {
+  color: #0f7a3d;
+}
+.form-status.error {
+  color: #c53030;
+}
+
 /* New layout styles */
 .container {
   max-width: 1000px;

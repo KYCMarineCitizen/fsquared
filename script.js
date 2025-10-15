@@ -50,33 +50,80 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	});
   
-		// Quick contact form: open mail client addressed to selected company
+		// Quick contact form posts to FastAPI relay
 		const quickForm = document.getElementById('quick-contact-form');
 		if (quickForm) {
-			quickForm.addEventListener('submit', function (e) {
+			const statusEl = document.getElementById('quick-contact-status');
+			const submitBtn = quickForm.querySelector('button[type="submit"]');
+			const endpoint = quickForm.dataset.endpoint || '/contact';
+
+			const setStatus = (message, tone) => {
+				if (!statusEl) return;
+				statusEl.textContent = message;
+				statusEl.className = `form-status ${tone || ''}`.trim();
+			};
+
+			quickForm.addEventListener('submit', async function (e) {
 				e.preventDefault();
-				const form = e.target;
-				const company = form.company.value;
-				const name = form.name.value;
-				const fromEmail = form.email.value;
-				const message = form.message.value;
+				if (!submitBtn) return;
 
-				// map company key to email address
-						const map = {
-							fsquared: 'kyc@fsquared.ai',
-							onlyallow: 'kyc@onlyallow.ai',
-							quirkbot: 'kyc@quirkbot.ai',
-							virusfor: 'kyc@virusfor.ai',
-							batchforge: 'kyc@batchforge.ai'
-						};
+				const companyField = quickForm.querySelector('#company');
+				const nameField = quickForm.querySelector('#name');
+				const emailField = quickForm.querySelector('#email');
+				const messageField = quickForm.querySelector('#message');
 
-				const to = map[company] || 'info@fsquared.ai';
+				if (!nameField || !emailField || !messageField) {
+					setStatus('Form is missing required fields. Please reload the page and try again.', 'error');
+					return;
+				}
 
-				const subject = encodeURIComponent('Website inquiry from ' + name + ' (' + fromEmail + ')');
-				const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + fromEmail + '\n\nMessage:\n' + message);
+				const companyLabel = companyField && companyField.selectedIndex >= 0
+					? companyField.options[companyField.selectedIndex].text
+					: 'General';
+				const name = nameField.value.trim();
+				const fromEmail = emailField.value.trim();
+				const message = messageField.value.trim();
 
-				// open user's mail client
-				window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+				if (!name || !fromEmail || !message) {
+					setStatus('Please complete all fields before submitting.', 'error');
+					return;
+				}
+
+				setStatus('Sending your message…', 'pending');
+				submitBtn.disabled = true;
+
+				try {
+					const response = await fetch(endpoint, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({
+							name,
+							email: fromEmail,
+							message,
+							company: companyLabel,
+						}),
+					});
+
+					let result = {};
+					try {
+						result = await response.json();
+					} catch (_) {
+						// ignore parse errors; handled below
+					}
+
+					if (!response.ok || result.error) {
+						const errorMessage = result.error || 'We could not send your message just now. Please try again or email info@fsquared.ai.';
+						throw new Error(errorMessage);
+					}
+
+					setStatus('Thanks! Your message has been sent.', 'success');
+					quickForm.reset();
+					quickForm.reset();
+				} catch (err) {
+					setStatus(err.message || 'We could not send your message just now. Please try again or email info@fsquared.ai.', 'error');
+				} finally {
+					submitBtn.disabled = false;
+				}
 			});
 		}
 });

@@ -127,7 +127,7 @@
       </div>
 
       <h3>Send a quick message</h3>
-      <form id="quick-contact-form">
+      <form id="quick-contact-form" data-endpoint="/contact">
         <div>
           <label for="company">Company</label><br />
           <select id="company" name="company" required>
@@ -153,6 +153,7 @@
         <div>
           <button class="btn" type="submit">Send Message</button>
         </div>
+        <p id="quick-contact-status" class="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>
   </main>
