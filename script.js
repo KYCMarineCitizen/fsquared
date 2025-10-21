@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 
 					if (!response.ok || result.error) {
-						const errorMessage = result.error || 'We could not send your message just now. Please try again or email info@fsquared.ai.';
+						const errorMessage = result.error || 'We could not send your message just now. Please try again or email kyc@fsquard.ai.';
 						throw new Error(errorMessage);
 					}
 
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					quickForm.reset();
 					quickForm.reset();
 				} catch (err) {
-					setStatus(err.message || 'We could not send your message just now. Please try again or email info@fsquared.ai.', 'error');
+					setStatus(err.message || 'We could not send your message just now. Please try again or email kyc@fsquard.ai.', 'error');
 				} finally {
 					submitBtn.disabled = false;
 				}
