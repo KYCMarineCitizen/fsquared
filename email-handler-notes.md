@@ -99,3 +99,9 @@ python -m email_service.test_send \
 - Configure `EMAIL_LOG_PATH` to `/var/log/email-handler.log`; use Cloud Logging sidecar or direct stdout if preferred.
 - Add Google-managed certificates/DNS for additional aliases prior to enabling them in `SMTP_ALLOWED_DOMAINS`.
 - Enable Cloud Armor or FastAPI middleware for Geo/IP filters if form spam increases.
+
+## Google Tag Manager Link Tracking
+- SVG-based social icons now bubble clicks to the surrounding `<a>` tags. The CSS update keeps the anchor as the clickable element so GTM can rely on the built-in link click trigger.
+- In GTM, use the standard **Link Click** trigger (built-in “Just Links”) instead of “All Elements.” Scope it with a condition such as `Click Classes contains social-` or `Click URL matches RegEx ^https://(www\.)?(facebook|instagram|x|wa\.me)/` so only outbound social clicks fire the tag.
+- If an “All Elements” trigger was added previously to compensate, disable it after publishing the link trigger to avoid duplicate events.
+- QA in GTM preview mode: click each social icon and confirm the `gtm.linkClick` event appears with `Click Element` showing the `<a>` node (not the SVG). Once confirmed, publish the container.

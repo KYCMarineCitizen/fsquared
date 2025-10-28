@@ -313,6 +313,10 @@ form input, form button {
 .socials { margin: 2rem 0; text-align: center; }
 .socials h2 { margin-bottom: 0.75rem; color: #111; }
 .social-links { display: inline-flex; gap: 0.75rem; align-items: center; }
+.social-links a svg,
+.social-links a svg * {
+  pointer-events: none; /* let the <a> capture clicks so analytics tags fire */
+}
 .social { display: inline-flex; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 8px; background: #fff; color: #111; text-decoration: none; box-shadow: 0 4px 14px rgba(10,10,10,0.08); }
 .social svg { width: 20px; height: 20px; fill: currentColor; }
 .social-facebook { background: #1877f2; color: #fff; }
